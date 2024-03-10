@@ -2,7 +2,10 @@ import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import logo from "../images/logo.png";
-import { useState } from "react";
+import { domin, onRun } from "@/pages/api/config";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Link from "next/link";
 
 const navigation = [
   { name: "درباره ما", href: "#" },
@@ -13,6 +16,31 @@ const navigation = [
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [data, setData] = useState();
+  const [quickaccess, setQuickaccess] = useState();
+
+
+  const postData = () => {
+    axios
+      .post(onRun + "/information/getup", { Domain: domin })
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+
+
+    axios.post(onRun + "/quickaccess/getup", { Domain: domin })
+    .then(response=>{
+      setQuickaccess(response.data)
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  };
+  useEffect(postData, []);
 
   return (
     <header className=" sticky bg-white inset-x-0 top-0 z-50 shadow-lg">
@@ -24,24 +52,22 @@ const Header = () => {
           <div className="uppercase tracking-wide text-sm font-semibold h-20  bg-white rounded-2xl z-[100]">
             <div className="grid grid-rows-2 grid-flow-col gap-4 w-60 ">
               <div className="row-span-2 col-span-1">
-                <Image className="h-20 w-auto my-1 mr-1" src={logo} alt="" />
+                {data ? (
+                  <Image
+                    className="h-20 w-auto my-1 mr-1"
+                    src={data.Logo}
+                    alt=""
+                    width={1000}
+                    height={1000}
+                  />
+                ) : null}
               </div>
               <div className="row-span-1 bottom-0">
-                {" "}
                 <p className="text-xl border-spacing-x-3.5 text-[#02205F]">
-                  {" "}
-                  ایساتیس پویا
+                  {data?data.Name:""}
                 </p>
               </div>
-              <div class="col-span-1">
-                {" "}
-                <p className="text-sm  text-[#9C209E]">
-                  {" "}
-                  گروه مالی و سرمایه گذاری
-                </p>
-                {/* </div> */}
-              </div>
-            </div>{" "}
+            </div>
           </div>
         </div>
         <div className="flex lg:hidden">
@@ -66,18 +92,19 @@ const Header = () => {
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a
-            href="#"
-            className="text-sm font-semibold bg-[#232563] leading-6 text-white px-2 py-2 rounded-2xl ml-2"
-          >
-            افتتاح حساب
-          </a>
-          <a
-            href="#"
-            className="text-sm font-semibold bg-[#232563] leading-6 text-white px-2 py-2 rounded-2xl"
-          >
-            شعب ایساتیس
-          </a>
+          {quickaccess?
+          quickaccess.map(i=>{
+            console.log(i)
+            return(
+              <Link href={i.Url} className="text-sm font-semibold bg-[#232563] leading-6 text-white px-2 py-2 rounded-2xl ml-2">
+            
+              {i.Title}
+              </Link>
+            )
+          })
+
+            :null
+        }
         </div>
       </nav>
       <Dialog

@@ -45,39 +45,13 @@ function Icon({ id, open }) {
 
 
 export default function FrequentlyQuestion() {
-  const dataa = [
-    {
-      id: 1,
-      title: "لورم ایپسوم متن ساختگی با تولید سادگی؟",
-      descripption:
-        "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد",
-    },
-    {
-      id: 2,
-      title: "لورم ایپسوم متن ساختگی با تولید سادگی؟",
-      descripption:
-        "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد",
-    },
-    {
-      id: 3,
-      title: "لورم ایپسوم متن  ساختگی با تولید سادگی؟",
-      descripption:
-        "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد",
-    },
-    {
-      id: 4,
-      title: "لورم ایپسوم متن ساختگی با تولید سادگی؟",
-      descripption:
-        "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت ف  راوان جامعه و متخصصان را می طلبد",
-    },
-  ];
 
   const [data, setData] = useState([])
   const postData = () => {
     axios
       .post(onRun + "/questions/getup", { Domain: domin })
       .then((response) => {
-        console.log(response.data);
+        setData(response.data);
       })
       .catch((err) => {
         console.log(err);
@@ -85,7 +59,7 @@ export default function FrequentlyQuestion() {
   };
   useEffect(postData, [])
 
-  const [open, setOpen] = React.useState(0);
+  const [open, setOpen] = React.useState(9999);
 
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
 
@@ -137,23 +111,23 @@ export default function FrequentlyQuestion() {
         </div>
       </div>
       <div className="mx-auto w-full max-w-7xl px-4 py-6">
-        {dataa.map((item) => (
+        {data.map((item) => (
           <Accordion
             key={item.id}
-            open={open === item.id}
+            open={open === item.index}
             className="mb-2 rounded-lg  bg-[#F3F3F3] shadow-md px-4 my-5"
-            icon={<Icon id={item.id} open={open} />}
+            icon={<Icon id={item.index} open={open} />}
           >
             <AccordionHeader
-              onClick={() => handleOpen(item.id)}
+              onClick={() => handleOpen(item.index)}
               className={`border-b-0 transition-colors ${
-                open === item.id ? "text-gray-900" : "text-gray-700"
+                open === item.index ? "text-gray-900" : "text-gray-700"
               }`}
             >
-              {item.title}
+              {item.Question}
             </AccordionHeader>
             <AccordionBody className="pt-0 text-base font-normal">
-              {item.descripption}
+              {item.Answer}
             </AccordionBody>
           </Accordion>
         ))}
