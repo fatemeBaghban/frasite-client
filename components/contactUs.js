@@ -1,4 +1,25 @@
+import { domin, onRun } from "@/pages/api/config";
+import React, { useEffect ,useState} from "react";
+import axios from "axios";
+
+
 const ContactUs = () => {
+
+  const [data, setData] = useState([])
+  const postData = () => {
+    axios
+      .post(onRun + "/information/getup", { Domain: domin })
+      .then((response) => {
+        console.log(response.data)
+        setData(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(postData, [])
+
+
   return (
     <>
       <div className="mx-auto w-full max-w-4xl px-4 py-6">
@@ -50,7 +71,7 @@ const ContactUs = () => {
                   >
                     <path d="M461.066 560c108-108 147.333-176.667 118-206l-8-8c-20-20-33.667-36-41-48-7.333-12-8.667-30-4-54s21-53.333 49-88c13.333-16 25.667-29 37-39 11.333-10 23-15.333 35-16 12-.667 22-1 30-1s17.667 4.333 29 13c11.333 8.667 19.333 14.667 24 18 4.667 3.333 13.333 11.667 26 25s19.667 20.667 21 22c32 32 30 96.667-6 194s-104 195.333-204 294c-100 100-198.333 168.333-295 205s-161 39-193 7c-1.333-1.333-9-8.667-23-22s-22.333-21.667-25-25c-2.667-3.333-8.667-11.333-18-24s-13.667-23-13-31c.667-8 1.333-18 2-30s5.667-23.667 15-35c9.333-11.333 22-23.667 38-37 28-22.667 51.333-38.333 70-47 18.667-8.667 36.667-9.333 54-2s29 13.333 35 18 19 17 39 37c29.333 29.333 98.667-10.667 208-120" />
                   </svg>
-                  035 355 9871
+                  {data.Telephone}
                 </div>
                 <div className="py-3.5 text-white text-sm flex flex-row ">
                   <svg
@@ -62,7 +83,7 @@ const ContactUs = () => {
                   >
                     <path d="M20 8l-8 5-8-5V6l8 5 8-5m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2z" />
                   </svg>
-                  ipgrp@webmail.ir
+                  {'info@'+data.Domain}
                 </div>
                 <div className="py-3.5 text-white text-sm flex flex-row ">
                   <svg
@@ -74,7 +95,7 @@ const ContactUs = () => {
                   >
                     <path d="M12 11.5A2.5 2.5 0 019.5 9 2.5 2.5 0 0112 6.5 2.5 2.5 0 0114.5 9a2.5 2.5 0 01-2.5 2.5M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7z" />
                   </svg>
-                  یزد، بلوار جمهوری، ساختمان بورس
+                  {data.Address}
                 </div>
               </div>
               <div className="absolute inset-x-0 bottom-0  z-0 ">
