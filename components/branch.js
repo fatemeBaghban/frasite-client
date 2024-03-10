@@ -1,4 +1,21 @@
-export default function SearchTable() {
+import { domin, onRun } from "@/pages/api/config";
+import axios from "axios";
+import { useEffect, useState } from "react";
+
+export default function Branches() {
+  const [data, setData] = useState();
+  const postData = () => {
+    axios
+      .post(onRun + "/information/getup", { Domain: domin })
+      .then((response) => {
+        console.log(response.data);
+        setData(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(postData, []);
   return (
     <>
       <div className="w-full h-full bg-white">
@@ -59,7 +76,7 @@ export default function SearchTable() {
                   <th scope="col" className="px-6 py-3"></th>
                 </tr>
               </thead>
-              <tbody  className="rounded-ful">
+              <tbody className="rounded-ful">
                 {Array.from({ length: 8 }).map((index) => (
                   <tr
                     className="bg-[#FBFBFB] border-b border-white rounded-full border-8 shadow-md mt-2"

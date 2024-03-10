@@ -7,13 +7,13 @@ import backImg from "../images/background.png";
 
 import logo from "../images/logo.png";
 import IntroductionCom from "@/components/introductionCom";
-import SearchTable from "@/components/search";
 import FrequentlyQuestion from "@/components/faq";
 import Blog from "@/components/blogs";
 import QuickAccess from "@/components/quickAccess";
 import ContactUs from "@/components/contactUs";
 import Header from "@/components/header";
 import AboutUs from "@/components/aboutus";
+import Branches from "@/components/branch";
 
 const navigation = [
   { name: "راهنمای معاملات", href: "#" },
@@ -32,7 +32,7 @@ export default function Home() {
         <IntroductionCom />
       </div>
       <div className="bg-white h-fit px-12 py-5">
-        <SearchTable />
+        <Branches />
       </div>
       <div className="bg-white h-fit px-12 py-5">
         <FrequentlyQuestion />
