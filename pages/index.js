@@ -7,7 +7,7 @@ import backImg from "../images/background.png";
 
 import logo from "../images/logo.png";
 import IntroductionCom from "@/components/introductionCom";
-import SearchTable from "@/components/search";
+import SearchTable from "@/components/branch";
 import FrequentlyQuestion from "@/components/faq";
 import Blog from "@/components/blogs";
 import QuickAccess from "@/components/quickAccess";

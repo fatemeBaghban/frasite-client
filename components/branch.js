@@ -1,4 +1,24 @@
-export default function SearchTable() {
+import { domin, onRun } from "@/pages/api/config";
+import React, { useEffect ,useState} from "react";
+import axios from "axios";
+
+export default function Branches() {
+
+  const [data, setData] = useState([])
+
+  const postData = () => {
+    axios
+      .post(onRun + "/branch/getup", { Domain: domin })
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(postData, []);
+
+
   return (
     <>
       <div className="w-full h-full bg-white">
@@ -60,21 +80,25 @@ export default function SearchTable() {
                 </tr>
               </thead>
               <tbody  className="rounded-ful">
-                {Array.from({ length: 8 }).map((index) => (
+                {data.map(
+                  (index) =>{
+                    console.log(index)
+                
+                return(
                   <tr
                     className="bg-[#FBFBFB] border-b border-white rounded-full border-8 shadow-md mt-2"
-                    key={index}
+                    key={index.Code}
                   >
                     <th
                       scope="row"
                       className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
                     >
-                      <p>تهران</p>
+                      <p>{index.Province}</p>
                     </th>
-                    <td className="px-6 py-4">تهران </td>
-                    <td className="px-6 py-4">شعبه</td>
+                    <td className="px-6 py-4">{index.City} </td>
+                    <td className="px-6 py-4">{index.Types}</td>
                     <td className="px-6 py-4">
-                      سعادت آباد،خیابان 31 شرقی، پلاک 21 ،طبقه همکف
+                      {index.Address}
                     </td>
                     <td className="px-6 py-4 text-right">
                       <div className="flex flex-row">
@@ -103,7 +127,8 @@ export default function SearchTable() {
                       </div>
                     </td>
                   </tr>
-                ))}
+                )})
+                }
               </tbody>
             </table>
           </div>

@@ -39,9 +39,9 @@ const IntroductionCom = () => {
   const [data, setData] = React.useState();
   const postData = () => {
     axios
-      .post(onRun + "/information/getup", { domin: domin })
+      .post(onRun + "/information/getup", { Domain: domin })
       .then((response) => {
-        setData(response.data.data);
+        // console.log(response.data);
       })
       .catch((err) => {
         console.log(err);
