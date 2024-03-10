@@ -14,6 +14,7 @@ import ContactUs from "@/components/contactUs";
 import Header from "@/components/header";
 import AboutUs from "@/components/aboutus";
 import Branches from "@/components/branch";
+import SlideShow from "@/components/slideShow";
 
 const navigation = [
   { name: "راهنمای معاملات", href: "#" },
@@ -22,11 +23,13 @@ const navigation = [
   { name: "تماس با ما", href: "#" },
 ];
 export default function Home() {
-
   return (
     <>
       <div className="sticky bg-white inset-x-0 top-0 z-50 shadow-lg">
         <Header />
+      </div>
+      <div className="bg-white h-fit">
+        {/* <SlideShow /> */}
       </div>
       <div className="bg-white h-fit">
         <IntroductionCom />
@@ -49,7 +52,6 @@ export default function Home() {
       <div className="bg-white h-fit px-12 py-5">
         <AboutUs />
       </div>
-      {/* </div> */}
     </>
   );
 }

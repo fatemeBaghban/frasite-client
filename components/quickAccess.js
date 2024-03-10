@@ -16,7 +16,6 @@ const QuickAccess = () => {
     axios
       .post(onRun + "/quickaccess/getup", { Domain: domin })
       .then((response) => {
-        console.log("quickkkkkkk",response.data);
         setData(response.data);
       })
       .catch((err) => {

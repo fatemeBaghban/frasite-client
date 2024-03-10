@@ -96,7 +96,7 @@ const Header = () => {
           quickaccess.map(i=>{
             console.log(i)
             return(
-              <Link href={i.Url} className="text-sm font-semibold bg-[#232563] leading-6 text-white px-2 py-2 rounded-2xl ml-2">
+              <Link key={i} href={i.Url} className="text-sm font-semibold bg-[#232563] leading-6 text-white px-2 py-2 rounded-2xl ml-2">
             
               {i.Title}
               </Link>
