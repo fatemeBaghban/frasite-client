@@ -1,8 +1,40 @@
 import Image from "next/image";
 import card from "../images/about.png";
 import logo from "../images/logo.png";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { domin, onRun } from "@/pages/api/config";
 
 const AboutUs = () => {
+  const [data, setData] = useState({
+    AboutUs: "",
+    Admin: "",
+    Address: "",
+    Cataloge: "",
+    Date: "",
+    Description: null,
+    Domain: "",
+    FieldOfActivity: "",
+    Keywords: null,
+    Logo: "",
+    Name: "",
+    NationalID: "",
+    Socialmedia: "",
+    Telephone: "",
+  });
+
+  const postAboutus = () => {
+    axios
+      .post(onRun + "/information/getup", { Domain: domin })
+      .then((response) => {
+        console.log("aboutttt isss:", response.data);
+        setData(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(postAboutus, []);
   return (
     <>
       <div className="mx-auto w-full max-w-4xl px-4 py-6">
@@ -47,7 +79,7 @@ const AboutUs = () => {
                   {" "}
                   <p className="text-xl pr-1 border-spacing-x-3.5 text-[#02205F]">
                     {" "}
-                    ایساتیس پویا
+                   {data.Name}
                   </p>
                 </div>
                 <div class="col-span-1">
@@ -60,40 +92,21 @@ const AboutUs = () => {
                 </div>
               </div>{" "}
             </div>
-            <div className="block mt-1 text-lg leading-tight font-medium text-[#232563]">
-              <div className="grid grid-flow-row p-2 pt-1 z-40 ">
-                <div className="py-1  text-xl font-bold">
-                  اعضای هیئت مدیره :
-                </div>
-                <div className="py-1 text-sm mt-1 flex flex-row ">
-                  اعضای هیئت مدیره{" "}
-                </div>
-                <div className="py-1 text-sm flex flex-row ">
-                  اعضای هیئت مدیره{" "}
-                </div>
-                <div className="py-1 text-sm flex flex-row ">
-                  اعضای هیئت مدیره
-                </div>
-              </div>
-            </div>
+
             <div className="block mt-1 text-lg leading-tight font-medium  text-[#232563]">
               <div className="grid grid-flow-row p-2 pt-1 z-40 ">
                 <div className="py-1  text-xl font-bold">مدیر عامل :</div>
                 <div className="py-1 text-sm mt-1 flex flex-row ">
-                  آقای مدیر عامل
-                </div>
+                  {data.Admin}</div>
               </div>
             </div>
             <div className="block mt-1 text-lg leading-tight font-medium text-[#232563]">
               <div className="grid grid-flow-row p-2 pt-1 z-40 ">
                 <div className="py-1 text-[3232563] text-xl font-bold">
-                  تاریخچه شرکت:
+                  درباره شرکت:
                 </div>
                 <div className="py-1 text-[#3232563] text-sm mt-1 flex flex-row ">
-                  شرکت کارگزاری ایساتیس پویا در سال 1384 فعالیت خود را در زمینه
-                  بورس و اوراق بهادار شروع نموده و با تکیه بر نیروهای متخصص و
-                  ارائه خدمات منظم، تمام توان خود را در راستای تکریم مشتریان
-                  بکار گرفته است
+               {data.AboutUs}
                 </div>
               </div>
             </div>
@@ -103,11 +116,7 @@ const AboutUs = () => {
                   زمینه فعالیت:
                 </div>
                 <div className="py-1 text-[#3232563] text-sm mt-1 flex flex-row ">
-                  انواع فولادهای کربنی، عملیات حرارت پذیر، سخت شونده سطحی، میکرو
-                  آلیاژها، فنر و ...  مجوز تولید میلگرد فولاد آلیاژی به شماره
-                  24134 تاریــخ 86/6/25از اداره کل صنعت و معدن و تجارت و تمدید
-                  آن به شماره 42549 تاریخ 1400/7/7  مساحت زمین: 54000 متر مربع
-                  مساحت سولـــه ها 24000 متر مربع
+                {data.FieldOfActivity}
                 </div>
               </div>
             </div>

@@ -1,48 +1,35 @@
 import { Card } from "@material-tailwind/react";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import card from "../images/card.png";
+import axios from "axios";
+import { domin, onRun } from "@/pages/api/config";
 
 export default function Blog() {
+  const [data, setData] = useState([
+    {
+      Content: "",
+      Domain: "",
+      Grouping: "",
+      KeyWord: "",
+      Status: Boolean,
+      TypeOfContent: "",
+    },
+  ]);
+
+  const postBloges = () => {
+    axios
+      .post(onRun + "/news/getup", { Domain: domin })
+      .then((response) => {
+        console.log("blog isss:", response.data);
+        setData(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(postBloges, []);
   return (
-    // <div className="container mx-auto p-4">
-    //   <div className="flex flex-col md:flex-row">
-    //     <div className="w-full md:w-1/2 p-4 bg-gray-100 rounded-lg shadow-md">
-    //       <h2 className="text-2xl font-bold mb-4">اخبار و مقالات</h2>
-    //       <p className="text-gray-700 mb-4">
-    //         لورم ایپسوم متن ساختگی با تولید سادگی
-    //       </p>
-    //       <button className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-700">
-    //         مشاهده بیشتر
-    //       </button>
-    //     </div>
-    //     <div className="w-full md:w-1/2 p-4 mt-4 md:mt-0 bg-gray-100 rounded-lg shadow-md">
-    //       <h2 className="text-2xl font-bold mb-4">
-    //         دسته بندی بورس و اوراق بهادار
-    //       </h2>
-    //       <ul className="list-disc ml-4">
-    //         <li className="text-gray-700 mb-2">
-    //           دسته بندی بورس و اوراق بهادار
-    //         </li>
-    //         <li className="text-gray-700 mb-2">
-    //           دسته بندی بورس و اوراق بهادار
-    //         </li>
-    //         <li className="text-gray-700 mb-2">
-    //           دسته بندی بورس و اوراق بهادار
-    //         </li>
-    //       </ul>
-    //     </div>
-    //   </div>
-    //   <div className="mt-8">
-    //     <h2 className="text-2xl font-bold mb-4">
-    //       لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم
-    //     </h2>
-    //     <p className="text-gray-700 mb-4">
-    //       لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم متن ساختگی با تولید
-    //       سادگی نامفهوم متن ساختگی با تولید سادگی نامفهوم
-    //     </p>
-    //   </div>
-    // </div>
     <>
       <div className="mx-auto w-full max-w-4xl px-4 py-6">
         {/* title */}
@@ -50,7 +37,7 @@ export default function Blog() {
           <div className="relative flex py-5 items-center">
             <div className="flex-grow border-t-2  border-[#232563]"></div>
             <p className="flex-shrink mx-12 text-4xl text-[#232563]">
-              اخبار و مقالات{" "}
+              {data[0].TypeOfContent}
             </p>
             <div className="flex-grow border-t-2 border-gray-900"></div>
           </div>
@@ -60,27 +47,25 @@ export default function Blog() {
         </div>
       </div>
       <div className="mx-auto w-full max-w-7xl px-4 py-6 flex flex-row ">
-        {Array.from({ length: 4 }).map((i) => (
+        {data.map((i) => (
           <div className="flex flex-col mx-2" key={i}>
             <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
               <div className="relative flex h-36 w-full justify-center rounded-xl bg-white group-hover:opacity-75">
                 <Image className="rounded-t-lg " src={card} alt="" />
                 <div className=" absolute -bottom-5 flex h-auto w-auto items-center justify-center rounded-lg border-[2px] border-gray-100 bg-white shadow-lg">
                   <div className="h-full w-full rounded-full flex flex-row p-1 text-sm text-gray-700">
-                    <p>دسته بندی : بورس اوراق بهادار</p>
+                    <p>دسته بندی :{data[0].Grouping}</p>
                   </div>
                 </div>
               </div>
               <div className="p-5 mt-5">
                 <a href="#">
                   <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-                    لورم ایپسوم متن
+                    {data[0].KeyWord}
                   </h5>
                 </a>
                 <p className="mb-3 font-normal text-sm text-gray-700 ">
-                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                  استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و
-                  مجله در ...
+                  {data[0].Content}
                 </p>
                 <a
                   href="#"

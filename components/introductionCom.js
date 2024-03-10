@@ -55,17 +55,16 @@ const IntroductionCom = () => {
   });
   const postData = () => {
     axios
-      .post(onRun + "/information/getup", { domin: domin })
+      .post(onRun + "/information/getup", { Domain: domin })
       .then((response) => {
-        setData(response.data.data);
+        setData(response.data);
       })
       .catch((err) => {
         console.log(err);
       });
   };
   useEffect(postData, []);
-  const [name, setName] = useState(String);
-  const position = [51.505, -0.09];
+
   return (
     <>
       <div className="mx-auto w-full max-w-4xl px-4 py-6">
@@ -89,16 +88,18 @@ const IntroductionCom = () => {
                     <div className="grid grid-rows-2 grid-flow-col gap-4">
                       <div className="row-span-2 col-span-1">
                         <Image
+                          // width={100}
+                          // height={100}
                           className="h-16 w-auto my-1 mr-1"
-                          src={data.Logo}
-                          alt=""
+                          src={logo}
+                          alt="logo"
                         />
                       </div>
                       <div className="row-span-1">
                         {" "}
                         <p className="text-xl pr-1 pt-2 border-spacing-x-3.5 text-[#02205F]">
                           {" "}
-                          {data.Name}
+                          ایساتیس پویا
                         </p>
                       </div>
                       <div class="col-span-1">
