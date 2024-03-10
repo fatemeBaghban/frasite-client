@@ -240,9 +240,9 @@ const ContactUs = () => {
                       name="subject"
                       className="block w-full rounded-md border-0 px-3.5 py-1 my-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     >
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
+                      <option>امورسهام</option>
+                      <option>فروش</option>
+                      <option>دیگر</option>
                     </select>
                   </div>
                 </div>
