@@ -55,14 +55,9 @@ const IntroductionCom = () => {
   });
   const postData = () => {
     axios
-      .post(
-        onRun + "/information/getup",
-        // "/introduction/getup",
-        { Domain: domin }
-      )
+      .post(onRun + "/information/getup", { domin: domin })
       .then((response) => {
-        console.log(response.data);
-        setData(response.data);
+        setData(response.data.data);
       })
       .catch((err) => {
         console.log(err);
