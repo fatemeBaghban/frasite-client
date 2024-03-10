@@ -79,7 +79,6 @@ export default function Branches() {
               </thead>
               <tbody className="rounded-ful">
                 {data.map((index) => {
-                  console.log(index);
 
                   return (
                     <tr
