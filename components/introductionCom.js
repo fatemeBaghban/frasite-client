@@ -2,7 +2,9 @@ import Image from "next/image";
 import logo from "../images/logo.png";
 import img from "../images/aa.png";
 import img1 from "../images/bb.png";
-import React from "react";
+import React, { useEffect } from "react";
+import { domin, onRun } from "@/pages/api/config";
+import axios from "axios";
 
 const compony = [
   {
@@ -29,15 +31,24 @@ const compony = [
   {
     name: " آدرس:",
     role: "یزد،بلوار جمهوری،ساختمان بورس",
-    // 
+    //
   },
 ];
 
 const IntroductionCom = () => {
-  const GetData= async=>{
-
-  }
   const [data, setData] = React.useState();
+  const postData = () => {
+    axios
+      .post(onRun + "/information/getup", { domin: domin })
+      .then((response) => {
+        setData(response.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(postData, []);
+
   const position = [51.505, -0.09];
   return (
     <>
