@@ -1,5 +1,8 @@
 import Image from "next/image";
 import card from "../images/card.png";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { domin, onRun } from "@/pages/api/config";
 const dataaaa = [
   { idd: 1, title: "احراز هویت", image: card },
   { idd: 2, title: "پذیرش آنلاین", image: card },
@@ -7,6 +10,19 @@ const dataaaa = [
   { idd: 4, title: "افتتاح حساب ", image: card },
 ];
 const QuickAccess = () => {
+  const [data, setData] = useState([{Domain:"",Title:"",Url:""}]);
+
+  const postQuickAccess = () => {
+    axios
+      .post(onRun + "/quickaccess/getup", { Domain: domin })
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(postQuickAccess, []);
   return (
     <>
       <div className="mx-auto w-full max-w-4xl px-4 py-6">
@@ -43,14 +59,14 @@ const QuickAccess = () => {
         </div>
       </div>
       <div className="mx-auto w-full max-w-7xl px-4 py-6 flex flex-row ">
-        {dataaaa.map((item) => (
-          <div className="flex flex-col mx-2" key={item.idd}>
+        {data.map((item) => (
+          <div className="flex flex-col mx-2" key={item.Domain}>
             <div className="max-w-sm bg-white border border-gray-200 rounded-xl shadow-xl ">
               <div className="relative flex h-36 w-full justify-center rounded-xl bg-white">
-                <Image className="rounded-xl" src={item.image} alt="" />
+                <Image className="rounded-xl" src={card} alt="" />
                 <div className=" absolute -bottom-5 flex h-auto w-auto items-center justify-center rounded-lg border-[2px] border-gray-100 bg-white shadow-lg">
                   <div className="h-full w-full rounded-full flex flex-row p-1 px-5 text-sm text-gray-700">
-                    <p>{item.title}</p>
+                    <p>{item.Title}</p>
                   </div>
                 </div>
               </div>
