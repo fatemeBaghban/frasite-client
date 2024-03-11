@@ -94,9 +94,8 @@ const Header = () => {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           {quickaccess?
           quickaccess.map(i=>{
-            console.log(i)
             return(
-              <Link href={i.Url} className="text-sm font-semibold bg-[#232563] leading-6 text-white px-2 py-2 rounded-2xl ml-2">
+              <Link key={i.Url} href={i.Url} className="text-sm font-semibold bg-[#232563] leading-6 text-white px-2 py-2 rounded-2xl ml-2">
             
               {i.Title}
               </Link>
