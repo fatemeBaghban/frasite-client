@@ -10,7 +10,7 @@ const SlideShow = () => {
     axios
       .post(onRun + "/slider/getup", { Domain: domin })
       .then((response) => {
-        console.log("sliderrrrrrr", response.data.data);
+        console.log("sliderrrrrrr", response.data);
         setData(response.data);
       })
       .catch((err) => {
