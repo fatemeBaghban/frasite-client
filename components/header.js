@@ -22,7 +22,7 @@ const Header = () => {
 
   const postData = () => {
     axios
-      .post(onRun + "/information/getup", { Domain: domin })
+      .post(onRun + "/information/getup", {Domain:domin})
       .then((response) => {
         setData(response.data);
       })
@@ -32,7 +32,7 @@ const Header = () => {
 
 
 
-    axios.post(onRun + "/quickaccess/getup", { Domain: domin })
+    axios.post(onRun + "/quickaccess/getup", {Domain:domin})
     .then(response=>{
       setQuickaccess(response.data)
     })
