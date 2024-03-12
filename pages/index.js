@@ -23,7 +23,9 @@ export default function Home() {
       <div className="sticky bg-white inset-x-0 top-0 z-50 shadow-lg">
         <Header />
       </div>
-      <div className="bg-white h-fit">{/* <SlideShow /> */}</div>
+      <div className="bg-white h-fit">
+        <SlideShow />
+      </div>
       <div className="bg-white h-fit">
         <IntroductionCom />
       </div>
@@ -51,7 +53,7 @@ export default function Home() {
             <div className="flex flex-col border-l-2 border-white px-5 justify-center justify-items-center">
               <Image src={nama2} alt="enama" className="w-16 px-1 " />
             </div>
-            <div className="flex flex-col border-l-2 border-white px-5  justify-items-center justify-self-stretch">
+            <div className="flex flex-col border-l-2 border-white px-5 justify-items-center justify-self-stretch ">
               <p>راهنما</p>
               <p>دستورالعمل</p>
               <p>سرمایه‌گذاری</p>
@@ -59,7 +61,7 @@ export default function Home() {
               <p>درباره‌ما</p>
               <p>تماس‌با‌ما</p>
             </div>
-            <div className="flex flex-col border-l-2 border-white px-5  justify-items-center justify-self-stretch">
+            <div className="flex flex-col border-l-2 border-white px-5  justify-items-center justify-self-stretch ">
               <p>قوانین و مقررات</p>
               <p>بیانیه ریسک </p>
               <p> سیاست محرمانگی</p>

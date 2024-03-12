@@ -92,7 +92,7 @@ const AboutUs = () => {
                   {data.Admin}</div>
               </div>
             </div>
-            <div className="block mt-1 text-lg leading-tight font-medium text-[#232563]">
+            <div className="block mt-1 text-lg leading-tight font-medium pt-5 text-[#232563]">
               <div className="grid grid-flow-row p-2 pt-1 z-40 ">
                 <div className="py-1 text-[3232563] text-xl font-bold">
                   درباره شرکت:
@@ -102,7 +102,7 @@ const AboutUs = () => {
                 </div>
               </div>
             </div>
-            <div className="block mt-1 text-lg leading-tight font-medium text-[#232563]">
+            <div className="block mt-1 text-lg leading-tight font-medium pt-5 text-[#232563]">
               <div className="grid grid-flow-row p-2 pt-1 z-40 ">
                 <div className="py-1 text-[3232563] text-xl font-bold">
                   زمینه فعالیت:
