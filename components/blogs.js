@@ -5,6 +5,7 @@ import axios from "axios";
 import { domin, onRun } from "@/pages/api/config";
 import Slider from "react-slick";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Blog() {
   const [data, setData] = useState([
@@ -15,20 +16,36 @@ export default function Blog() {
       KeyWord: "",
       Status: Boolean,
       TypeOfContent: "",
-      ShortDescription:"",
+      ShortDescription: "",
+      route: "",
     },
   ]);
+const router=useRouter();
   const postBloges = () => {
     axios
-      .post(onRun + "/news/getup", { Domain: domin })
+      .post(onRun + "/news/getup", { Domain: domin  })
       .then((response) => {
+        console.log("post data", response.data);
         setData(response.data);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+  const getBlog = () => {
+    axios
+      .post(onRun + "/news/getup1", { Domain: domin  })
+      .then((response) => {
+        console.log("get data", response.data);
+        setDataaa(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(getBlog,[])
   useEffect(postBloges, []);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -36,6 +53,10 @@ export default function Blog() {
     slidesToShow: 4,
     slidesToScroll: 3,
   };
+const handleBlogClick=()=>{
+
+router.push(`/blog/${data[0].route}`)
+}
   return (
     <>
       <div className="mx-auto w-full max-w-4xl px-4 py-6">
@@ -79,21 +100,21 @@ export default function Blog() {
                   <Image className="rounded-t-lg " src={card} alt="" />
                   <div className=" absolute -bottom-5 flex h-auto w-auto items-center justify-center rounded-lg border-[2px] border-gray-100 bg-white shadow-lg">
                     <div className="h-full w-full rounded-full flex flex-row p-1 text-sm text-gray-700">
-                      <p>دسته بندی :{data[0].Grouping}</p>
+                      <p>دسته بندی :{i.Grouping}</p>
                     </div>
                   </div>
                 </div>
                 <div className="p-5 mt-5">
                   <Link href="/blog" target="_blank">
                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-                      {data[0].KeyWord}
+                      {i.KeyWord}
                     </h5>
                   </Link>
                   <p className="mb-3 font-normal text-sm text-gray-700 ">
-                    {data[0].ShortDescription}...
+                    {i.ShortDescription}...
                   </p>
                   <Link
-                    href="/blog"
+                    href={`/blog/${i.route}`}
                     target="_blank"
                     className="inline-flex items-center px-3 py-2  font-medium text-center text-[#232563] text-2xl  rounded-lg hover: focus:ring-4 focus:outline-none "
                   >
