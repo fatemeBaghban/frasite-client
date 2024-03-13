@@ -10,7 +10,7 @@ const dataaaa = [
   { idd: 4, title: "افتتاح حساب ", image: card },
 ];
 const QuickAccess = () => {
-  const [data, setData] = useState([{Domain:"",Title:"",Url:""}]);
+  const [data, setData] = useState([{ Domain: "", Title: "", Url: "" }]);
 
   const postQuickAccess = () => {
     axios
@@ -53,9 +53,7 @@ const QuickAccess = () => {
             </svg>
             <div className="flex-grow border-t-2 border-gray-900"></div>
           </div>
-          <p className="text-xl text-[#232563]">
-            لورم ایپسوم متن ساختگی با تولید سادگی{" "}
-          </p>
+          <p className="text-xl text-[#232563]">صنایع مفتول ایساتیس پویا</p>
         </div>
       </div>
       <div className="mx-auto w-full max-w-7xl px-4 py-6 flex flex-row ">

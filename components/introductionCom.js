@@ -71,11 +71,29 @@ const IntroductionCom = () => {
         {/* title */}
         <div className="py-3 text-center text-4xl font-bold text-[#232563]">
           <div className="relative flex py-5 items-center">
-            <div className="flex-grow border-t-2 border-[#232563]"></div>
+            <div className="flex-grow border-t-2 border-[#232563]" />{" "}
+            <svg
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              className="pl-5"
+            >
+              <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z" />
+            </svg>
             <p className="flex-shrink mx-12 text-4xl text-[#232563]">
               معرفی شرکت{" "}
             </p>
-            <div className="flex-grow border-t-2 border-gray-900"></div>
+            <svg
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              height="1em"
+              width="1em"
+              className="pr-5"
+            >
+              <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z" />
+            </svg>
+            <div className="flex-grow border-t-2 border-gray-900" />
           </div>
           <p className="text-xl text-[#232563]">{data.Name} </p>
         </div>
@@ -84,23 +102,22 @@ const IntroductionCom = () => {
             <div class="md:shrink-0">
               <div className="p-4">
                 <div className="uppercase tracking-wide text-sm font-semibold h-20 pr-1.5  bg-[#9C209E] rounded-l-3xl shadow-md rounded-r-2xl z-[100]">
-                  <div className="uppercase tracking-wide text-sm font-semibold h-20 px-4  bg-[#F0FCFF] rounded-2xl z-[100]">
+                  <div className="uppercase tracking-wide text-sm font-semibold h-20 px-4  bg-[#02205F] rounded-2xl z-[100]">
                     <div className="grid grid-rows-1 grid-flow-col gap-4">
                       <div className="row-span-2 col-span-1">
                         <Image
                           width={1000}
                           height={1000}
-                          className="h-16 w-auto my-1 mr-1"
+                          className="h-16 w-auto my-2 mr-1"
                           src={data.Logo}
                           alt="logo"
                         />
                       </div>
                       <div className="row-span-1 w-32">
                         {" "}
-                        <p className="text-xl pr-1 pt-2 border-spacing-x-3.5 text-[#02205F]">
+                        <p className="text-xl pr-1 pt-3 border-spacing-x-3.5 text-white">
                           {" "}
-                        
-                        {data.Name}
+                          {data.Name}
                         </p>
                       </div>
                       {/* <div class="col-span-1">
