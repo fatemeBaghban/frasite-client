@@ -89,8 +89,8 @@ const router=useRouter();
           <p className="text-xl text-[#232563]">صنایع مفتول ایساتیس پویا</p>
         </div>
       </div>
-      <div className="mx-auto w-full max-w-7xl px-4 py-6 flex flex-row  justify-center">
-        <div className="slider-container">
+      <div className="sm:mx-auto w-full max-w-7xl px-4 py-6 flex md:flex-row flex-col justify-center">
+        {/* <div className="slider-container"> */}
           {/* <Slider {...settings}> */}
           {data.map((i) => (
             <div className="flex flex-col mx-2 py-5" key={i}>
@@ -103,7 +103,7 @@ const router=useRouter();
                     </div>
                   </div>
                 </div>
-                <div className="p-5 mt-5">
+                <div className="p-5 mt-5 min-h-64 flex flex-col justify-between">
                   <Link href="/blog" target="_blank">
                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
                       {i.KeyWord}
@@ -115,7 +115,7 @@ const router=useRouter();
                   <Link
                     href={`/blog/${i.route}`}
                     target="_blank"
-                    className="inline-flex items-center px-3 py-2  font-medium text-center text-[#232563] text-2xl  rounded-lg hover: focus:ring-4 focus:outline-none "
+                    className="inline-flex items-center px-3 py-2   font-medium text-center text-[#232563] text-2xl  rounded-lg hover: focus:ring-4 focus:outline-none "
                   >
                     مشاهده بیشتر
                     <svg
@@ -132,7 +132,7 @@ const router=useRouter();
             </div>
           ))}
           {/* </Slider> */}
-        </div>
+        {/* </div> */}
       </div>
     </>
   );
