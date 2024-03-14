@@ -12,7 +12,7 @@ import Footer from "@/components/footer";
 export default function Home() {
   return (
     <>
-      <div className="inset-x-0 top-0 z-50 shadow-inner">
+      <div className="inset-x-0 top-0 z-50 shadow-inner scroll-smooth">
         <Header />
       </div>
       <div className="bg-white h-3/5">
@@ -21,18 +21,19 @@ export default function Home() {
       <div className="bg-white h-fit">
         <IntroductionCom />
       </div>
-      <div className="bg-white h-fit px-12 py-5">
+      <div className="bg-white h-fit px-12 py-10">
         <Branches />
+      </div>
+       <div className="bg-white h-fit px-12 py-5">
+        <QuickAccess />
       </div>
       <div className="bg-white h-fit px-12 py-5">
         <FrequentlyQuestion />
       </div>
-      <div className="bg-white h-fit px-12 py-5">
+      <div className="bg-white h-fit px-12 py-5 ">
         <Blog />
       </div>
-      <div className="bg-white h-fit px-12 py-5">
-        <QuickAccess />
-      </div>
+     
       <div className="bg-white h-fit px-12 py-5">
         <ContactUs />
       </div>

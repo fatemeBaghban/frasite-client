@@ -32,7 +32,7 @@ const SlideShow = () => {
   };
   return (
     <>
-      <div className="slider-container">
+      <div className="slider-container ">
         <Slider {...settings}>
           {data.map((i) => (
             <div key={i} className="flex flex-row w-fit h-3/5">
@@ -45,8 +45,8 @@ const SlideShow = () => {
                   height={500}
                   alt={i.Title}
                 />
-                <div className=" hidden absolute  lg:flex h-auto w-auto items-center justify-center rounded-lg border-[2px] right-32 bottom-32 shadow-lg border-gray-100 bg-white ">
-                  <div className=" rounded-full flex flex-row p-1 px-5 text-4xl text-right bold text-gray-800 w-56 h-38">
+                <div className=" hidden absolute  lg:flex h-auto w-auto items-center justify-center rounded-sm border-[2px] right-32 bottom-32 shadow-lg border-gray-100 bg-white ">
+                  <div className=" rounded-full flex flex-row  px-5 text-4xl text-right bold text-gray-800 w-56 h-38 p-8">
                     <p>{i.Title}</p>
                   </div>
                 </div>

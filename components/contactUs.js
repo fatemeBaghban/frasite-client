@@ -22,7 +22,7 @@ const ContactUs = () => {
 
   return (
     <>
-      <div className="mx-auto w-full max-w-4xl px-4 py-6">
+      <div className="mx-auto w-full max-w-4xl px-4 py-6" id="contact">
         {/* title */}
         <div className="py-3 text-center text-4xl font-bold text-[#232563]">
           <div className="relative flex py-5 items-center">

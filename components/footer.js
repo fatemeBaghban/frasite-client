@@ -26,7 +26,7 @@ const Footer = () => {
                 role="list"
                 className="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-50 sm:grid-cols-2 sm:gap-6"
               >
-                <li className="flex gap-x-3">
+                <li className="grid gap-x-3 sm:grid-cols-3 grid-cols-1 justify-items-center sm:flex">
                   <div className="flex flex-col px-5 justify-items-center justify-self-stretch text-base ">
                     <p className="font-bold mb-3 w-32">ایساتیس پویا</p>
                     <p>درباره‌ما</p>
@@ -58,7 +58,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="mx-auto  max-w-2xl border-t-2 border-gray-100   lg:flex lg:max-w-none">
+          <div className="mx-auto  max-w-2xl border-t-2 border-gray-100  lg:flex lg:max-w-none">
             <div className=" lg:flex-auto ring-t-2 ring-white py-3 text-center lg:text-right">
               <p>
                 شرکت سرمایه‌گذاری ایساتیس پویا در تاریخ 1384/12/22 تحت شماره

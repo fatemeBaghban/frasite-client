@@ -4,6 +4,8 @@ import card from "../images/card.png";
 import axios from "axios";
 import { domin, onRun } from "@/pages/api/config";
 import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -53,13 +55,10 @@ const router=useRouter();
     slidesToShow: 4,
     slidesToScroll: 3,
   };
-const handleBlogClick=()=>{
 
-router.push(`/blog/${data[0].route}`)
-}
   return (
     <>
-      <div className="mx-auto w-full max-w-4xl px-4 py-6">
+      <div className="mx-auto w-full max-w-4xl px-4 py-6 scroll-smooth" id="blogs">
         {/* title */}
         <div className="py-3 text-center text-4xl font-bold text-[#232563]">
           <div className="relative flex py-5 items-center">
@@ -90,13 +89,13 @@ router.push(`/blog/${data[0].route}`)
           <p className="text-xl text-[#232563]">صنایع مفتول ایساتیس پویا</p>
         </div>
       </div>
-      <div className="mx-auto w-full max-w-7xl px-4 py-6 flex flex-row ">
+      <div className="mx-auto w-full max-w-7xl px-4 py-6 flex flex-row  justify-center">
         <div className="slider-container">
           {/* <Slider {...settings}> */}
           {data.map((i) => (
-            <div className="flex flex-col mx-2" key={i}>
+            <div className="flex flex-col mx-2 py-5" key={i}>
               <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
-                <div className="relative flex h-36 w-full justify-center rounded-xl bg-white group-hover:opacity-75">
+                <div className="relative flex h-40 w-full justify-center rounded-xl bg-white group-hover:opacity-75">
                   <Image className="rounded-t-lg " src={card} alt="" />
                   <div className=" absolute -bottom-5 flex h-auto w-auto items-center justify-center rounded-lg border-[2px] border-gray-100 bg-white shadow-lg">
                     <div className="h-full w-full rounded-full flex flex-row p-1 text-sm text-gray-700">

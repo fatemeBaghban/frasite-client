@@ -3,6 +3,7 @@ import card from "../images/card.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { domin, onRun } from "@/pages/api/config";
+import Link from "next/link";
 const dataaaa = [
   { idd: 1, title: "احراز هویت", image: card },
   { idd: 2, title: "پذیرش آنلاین", image: card },
@@ -56,11 +57,12 @@ const QuickAccess = () => {
           <p className="text-xl text-[#232563]">صنایع مفتول ایساتیس پویا</p>
         </div>
       </div>
-      <div className="mx-auto w-full max-w-7xl px-4 py-6 flex flex-row ">
+      <div className="sm:mx-auto w-full max-w-7xl px-4 py-6 flex sm:flex-row flex-col  justify-center ">
         {data.map((item) => (
-          <div className="flex flex-col mx-2" key={item.Domain}>
+          <div className="flex flex-col mx-2 py-5" key={item.Title}>
+            <Link href={item.Url}>
             <div className="max-w-sm bg-white border border-gray-200 rounded-xl shadow-xl ">
-              <div className="relative flex h-36 w-full justify-center rounded-xl bg-white">
+              <div className="relative flex h-40 w-full justify-center rounded-xl bg-white">
                 <Image className="rounded-xl" src={card} alt="" />
                 <div className=" absolute -bottom-5 flex h-auto w-auto items-center justify-center rounded-lg border-[2px] border-gray-100 bg-white shadow-lg">
                   <div className="h-full w-full rounded-full flex flex-row p-1 px-5 text-sm text-gray-700">
@@ -69,6 +71,7 @@ const QuickAccess = () => {
                 </div>
               </div>
             </div>
+            </Link>
           </div>
         ))}
       </div>
