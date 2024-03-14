@@ -171,7 +171,7 @@ const Header = () => {
                     {menu.map((item) => (
                       <div
                         key={item.Title}
-                        className="group relative flex grow rounded-lg p-4  justify-between hover:bg-gray-50"
+                        className="group relative flex grow rounded-lg p-4  justify-items-start hover:bg-gray-50"
                       >
                         {item.Icone === null ? null : (
                           <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
@@ -179,14 +179,14 @@ const Header = () => {
                               className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
                               aria-hidden="true"
                             >
-                              <Image alt="" src={item.Icone} />
+                              <Image alt="" src={item.Icone}  width={100} height={100}/>
                             </div>
                           </div>
                         )}
-                        <div>
+                        <div className="my-auto mx-2">
                           <a
                             href={item.route}
-                            className="font-semibold text-black"
+                            className="font-semibold text-black right-2 " 
                           >
                             {item.Title}
                             <span className="absolute inset-0" />
@@ -195,7 +195,7 @@ const Header = () => {
                             {item.Title}
                           </p> */}
                         </div>
-                        <svg
+                        {/* <svg
                           fill="currentColor"
                           viewBox="0 0 16 16"
                           height="1.5em"
@@ -206,7 +206,7 @@ const Header = () => {
                             fillRule="evenodd"
                             d="M15 8a.5.5 0 00-.5-.5H2.707l3.147-3.146a.5.5 0 10-.708-.708l-4 4a.5.5 0 000 .708l4 4a.5.5 0 00.708-.708L2.707 8.5H14.5A.5.5 0 0015 8z"
                           />
-                        </svg>
+                        </svg> */}
                       </div>
                     ))}
                   </div>
