@@ -3,12 +3,8 @@ import card from "../images/card.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { domin, onRun } from "@/pages/api/config";
-const dataaaa = [
-  { idd: 1, title: "احراز هویت", image: card },
-  { idd: 2, title: "پذیرش آنلاین", image: card },
-  { idd: 3, title: "سهام عدالت", image: card },
-  { idd: 4, title: "افتتاح حساب ", image: card },
-];
+
+
 const QuickAccess = () => {
   const [data, setData] = useState([{Domain:"",Title:"",Url:""}]);
 

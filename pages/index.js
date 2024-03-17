@@ -10,13 +10,9 @@ import Header from "@/components/header";
 import AboutUs from "@/components/aboutus";
 import Branches from "@/components/branch";
 import SlideShow from "@/components/slideShow";
+import ProductsList from "@/components/productsList";
 
-const navigation = [
-  { name: "راهنمای معاملات", href: "#" },
-  { name: "آموزش", href: "#" },
-  { name: "درباره ما", href: "#" },
-  { name: "تماس با ما", href: "#" },
-];
+
 export default function Home() {
   return (
     <>
@@ -25,6 +21,9 @@ export default function Home() {
       </div>
       <div className="bg-white h-fit">
         <SlideShow />
+      </div>
+      <div className="bg-white h-fit">
+        <ProductsList />
       </div>
       <div className="bg-white h-fit">
         <IntroductionCom />
