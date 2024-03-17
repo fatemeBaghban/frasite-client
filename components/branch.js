@@ -74,12 +74,13 @@ export default function Branches() {
                   <th scope="col" className="px-6 py-3">
                     آدرس
                   </th>
-                  <th scope="col" className="px-6 py-3"></th>
+                  <th scope="col" className="px-6 py-3">
+                    تلفن
+                  </th>
                 </tr>
               </thead>
               <tbody className="rounded-ful">
                 {data.map((index) => {
-
                   return (
                     <tr
                       className="bg-[#FBFBFB] border-b border-white rounded-full border-8 shadow-md mt-2"
@@ -95,7 +96,8 @@ export default function Branches() {
                       <td className="px-6 py-4">{index.Types}</td>
                       <td className="px-6 py-4">{index.Address}</td>
                       <td className="px-6 py-4 text-right">
-                        <div className="flex flex-row">
+                        {index.Telephone}
+                        {/* <div className="flex flex-row">
                           <svg
                             viewBox="0 0 24 24"
                             fill="currentColor"
@@ -118,7 +120,7 @@ export default function Branches() {
                               <path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 000 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z" />
                             </svg>
                           </a>
-                        </div>
+                        </div> */}
                       </td>
                     </tr>
                   );

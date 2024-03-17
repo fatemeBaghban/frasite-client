@@ -22,7 +22,7 @@ const ContactUs = () => {
 
   return (
     <>
-      <div className="mx-auto w-full max-w-4xl px-4 py-6">
+      <div className="mx-auto w-full max-w-4xl px-4 py-6" id="contact">
         {/* title */}
         <div className="py-3 text-center text-4xl font-bold text-[#232563]">
           <div className="relative flex py-5 items-center">
@@ -55,7 +55,7 @@ const ContactUs = () => {
       <div className=" mx-auto bg-white overflow-hidden w-fit max-w-5xl  flex flex-row  mt-2.5  rounded-lg  h-fit shadow-xl border border-gray-200    ">
         {/* md:max-w-2xl */}
         <div className="md:flex">
-          <div className="md:shrink-0">
+          <div className="hidden md:block md:shrink-0">
             <div className="h-48 w-full relative object-cover rounded-lg bg-[#232563] md:h-full md:w-64">
               <div className="grid grid-flow-row p-5 pt-5 z-40 ">
                 <div className="py-3.5 text-white text-xl font-bold">
@@ -98,7 +98,7 @@ const ContactUs = () => {
                   {data.Address}
                 </div>
               </div>
-              <div className="absolute inset-x-0 bottom-0  z-0 ">
+              <div className="absolute inset-x-0 bottom-0  sm:z-0 ">
                 <div className=" bg-[#834C9E] h-36  rounded-tl-full w-36 relative">
                   <div className=" bg-[#83A3E0] h-24 w-24  rounded-full absolute left-0 top-0 opacity-80"></div>
                 </div>

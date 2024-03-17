@@ -36,7 +36,7 @@ const AboutUs = () => {
   useEffect(postAboutus, []);
   return (
     <>
-      <div className="mx-auto w-full max-w-4xl px-4 py-6">
+      <div className="mx-auto w-full max-w-4xl px-4 py-6" id="about">
         {/* title */}
         <div className="py-3 text-center text-4xl font-bold text-[#232563]">
           <div className="relative flex py-5 items-center">
@@ -66,22 +66,27 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-      <div className=" mx-auto bg-white overflow-hidden w-fit max-w-7xl  flex flex-row  mt-2.5  rounded-lg  h-fit  ">
-        <div className="md:flex">
-          <div className="p-8 border border-l-0 border-gray-200  rounded-r-lg">
+      <div className=" mg-12 lg:mx-auto bg-white overflow-hidden w-fit lg:max-w-7xl flex flex-row  mt-2.5 rounded-lg  h-fit  ">
+        <div className="md:flex md:my-5">
+          <div className="sm:p-8   p-2 border rounded-lg lg:border-l-0 border-gray-200  lg:rounded-r-lg">
             <div className="uppercase tracking-wide text-sm font-semibold h-20 px-4 bg-white rounded-2xl z-[100]">
               <div className="grid grid-rows-2 grid-flow-col gap-4 w-60 ">
-                <div className="row-span-2 col-span-1">
-                  <Image className="h-16 w-auto my-1 mr-1" src={data.Logo} width={1000} height={1000} alt="" />
+                <div className="row-span-2 col-span-1 ">
+                  <Image
+                    className="h-16 w-auto my-1 mr-1 bg-[#232563] rounded-full p-0.5"
+                    src={data.Logo}
+                    width={50}
+                    height={30}
+                    alt=""
+                  />
                 </div>
                 <div className="row-span-1">
                   {" "}
-                  <p className="text-xl pr-1 border-spacing-x-3.5 text-[#02205F]">
+                  <p className="text-xl pr-1 border-spacing-x-3.5 py-2 text-[#02205F]">
                     {" "}
-                   {data.Name}
+                    {data.Name}
                   </p>
                 </div>
-            
               </div>{" "}
             </div>
 
@@ -89,7 +94,8 @@ const AboutUs = () => {
               <div className="grid grid-flow-row p-2 pt-1 z-40 ">
                 <div className="py-1  text-xl font-bold">مدیر عامل :</div>
                 <div className="py-1 text-sm mt-1 flex flex-row ">
-                  {data.Admin}</div>
+                  {data.Admin}
+                </div>
               </div>
             </div>
             <div className="block mt-1 text-lg leading-tight font-medium pt-5 text-[#232563]">
@@ -98,7 +104,7 @@ const AboutUs = () => {
                   درباره شرکت:
                 </div>
                 <div className="py-1 text-[#3232563] text-sm mt-1 flex flex-row ">
-               {data.AboutUs}
+                  {data.AboutUs}
                 </div>
               </div>
             </div>
@@ -108,7 +114,7 @@ const AboutUs = () => {
                   زمینه فعالیت:
                 </div>
                 <div className="py-1 text-[#3232563] text-sm mt-1 flex flex-row ">
-                {data.FieldOfActivity}
+                  {data.FieldOfActivity}
                 </div>
               </div>
             </div>

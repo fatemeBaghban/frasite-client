@@ -12,7 +12,7 @@ const SlideShow = () => {
     axios
       .post(onRun + "/slider/getup", { Domain: domin })
       .then((response) => {
-        // console.log("sliderrrrrrr", response.data);
+        console.log("sliderrrrrrr", response.data);
         setData(response.data);
       })
       .catch((err) => {
@@ -28,22 +28,29 @@ const SlideShow = () => {
     autoplay: true,
     speed: 3000,
     autoplaySpeed: 3000,
-    arrows:false,
+    arrows: false,
   };
   return (
     <>
-      <div className="slider-container">
+      <div className="slider-container ">
         <Slider {...settings}>
           {data.map((i) => (
-            <div key={i} className="flex flex-row w-fit h-fit">
-              <Image
-                src={i.Picture}
-                className="w-screen h-fit "
-                layout="fullWidth"
-                width={1800}
-                height={500}
-                alt={i.Title}
-              />
+            <div key={i} className="flex flex-row w-fit h-3/5">
+              <div className="relative justify-center rounded-xl bg-white">
+                <Image
+                  src={i.Picture}
+                  className="w-screen h-3/5 "
+                  layout="fullWidth"
+                  width={1800}
+                  height={500}
+                  alt={i.Title}
+                />
+                <div className=" hidden absolute  lg:flex h-auto w-auto items-center justify-center rounded-sm border-[2px] right-32 bottom-32 shadow-lg border-gray-100 bg-white ">
+                  <div className=" rounded-full flex flex-row  px-5 text-4xl text-right bold text-gray-800 w-56 h-38 p-8">
+                    <p>{i.Title}</p>
+                  </div>
+                </div>
+              </div>
             </div>
           ))}
         </Slider>
