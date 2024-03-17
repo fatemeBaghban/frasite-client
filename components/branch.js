@@ -22,10 +22,10 @@ export default function Branches() {
       <div className="w-full h-full bg-white">
         <div>
           <div className=" relative overflow-auto  sm:rounded-lg">
-            <div class=" p-5 text-lg font-semibold  text-gray-900 bg-white ">
+            <div className=" p-5 text-lg font-semibold  text-gray-900 bg-white ">
               <form className="max-w-md mx-auto bg-white   ">
                 <label
-                  for="default-search"
+                  htmlFor="default-search"
                   className="mb-2 text-sm font-medium text-gray-900 sr-only"
                 ></label>
                 <div className="relative shadow-lg bg-gray-50">
@@ -49,9 +49,9 @@ export default function Branches() {
                     >
                       <path
                         stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
                       />
                     </svg>
@@ -84,7 +84,7 @@ export default function Branches() {
                   return (
                     <tr
                       className="bg-[#FBFBFB] border-b border-white rounded-full border-8 shadow-md mt-2"
-                      key={index.Code}
+                      key={Math.floor(Math.random()*10000)}
                     >
                       <th
                         scope="row"

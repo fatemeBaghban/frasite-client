@@ -10,130 +10,88 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 export default function Blog() {
-  const [data, setData] = useState([
-    {
-      Content: "",
-      Domain: "",
-      Grouping: "",
-      KeyWord: "",
-      Status: Boolean,
-      TypeOfContent: "",
-      ShortDescription: "",
-      route: "",
-    },
-  ]);
-const router=useRouter();
+  const [data, setData] = useState(null);
+  const router = useRouter();
+
   const postBloges = () => {
     axios
-      .post(onRun + "/news/getup", { Domain: domin  })
+      .post(onRun + "/news/getup", { Domain: domin })
       .then((response) => {
-        console.log("post data", response.data);
         setData(response.data);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  const getBlog = () => {
-    axios
-      .post(onRun + "/news/getup1", { Domain: domin  })
-      .then((response) => {
-        console.log("get data", response.data);
-        setDataaa(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-  useEffect(getBlog,[])
+
   useEffect(postBloges, []);
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 3,
-  };
 
   return (
-    <>
-      <div className="mx-auto w-full max-w-4xl px-4 py-6 scroll-smooth" id="blogs">
-        {/* title */}
-        <div className="py-3 text-center text-4xl font-bold text-[#232563]">
-          <div className="relative flex py-5 items-center">
-            <div className="flex-grow border-t-2  border-[#232563]" />{" "}
-            <svg
-              viewBox="0 0 16 16"
-              fill="currentColor"
-              height="1em"
-              width="1em"
-              className="pl-5"
-            >
-              <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z" />
-            </svg>
-            <p className="flex-shrink mx-12 text-4xl text-[#232563]">
-              اخبار و مقالات
-            </p>
-            <svg
-              viewBox="0 0 16 16"
-              fill="currentColor"
-              height="1em"
-              width="1em"
-              className="pr-5"
-            >
-              <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z" />
-            </svg>
-            <div className="flex-grow border-t-2 border-gray-900" />
-          </div>
-          <p className="text-xl text-[#232563]">صنایع مفتول ایساتیس پویا</p>
+    <section className="bg-white dark:bg-gray-900">
+      <div className="container px-6 py-10 mx-auto">
+        <div className="flex items-center justify-between">
+          <h1 className="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white">
+            اخرین مقالات
+          </h1>
         </div>
-      </div>
-      <div className="sm:mx-auto w-full max-w-7xl px-4 py-6 flex md:flex-row flex-col justify-center">
-        {/* <div className="slider-container"> */}
-          {/* <Slider {...settings}> */}
-          {data.map((i) => (
-            <div className="flex flex-col mx-2 py-5" key={i}>
-              <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
-                <div className="relative flex h-40 w-full justify-center rounded-xl bg-white group-hover:opacity-75">
-                  <Image className="rounded-t-lg " src={card} alt="" />
-                  <div className=" absolute -bottom-5 flex h-auto w-auto items-center justify-center rounded-lg border-[2px] border-gray-100 bg-white shadow-lg">
-                    <div className="h-full w-full rounded-full flex flex-row p-1 text-sm text-gray-700">
-                      <p>دسته بندی :{i.Grouping}</p>
+
+        <hr className="my-8 border-gray-200 dark:border-gray-700" />
+
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
+          {data ? (
+            <>
+              {data.map((i) => {
+                console.log(i)
+                return(
+
+                <div key={Math.floor(Math.random()*10000)}>
+                  <img
+                    className="object-cover object-center w-full h-64 rounded-lg lg:h-80"
+                    src={i.Picture}
+                    alt={i.Title}
+                  />
+
+                  <div className="mt-auto">
+                    <span className="text-blue-500 uppercase">{i.TypeOfContent}</span>
+
+                    <h1 className="mt-4 text-xl font-semibold text-gray-800 dark:text-white">
+                      {i.Title}
+                    </h1>
+
+                    <p className="mt-2 text-gray-500 dark:text-gray-400">
+                      {i.ShortDescription}
+                    </p>
+
+                    <div className="flex items-center justify-between mt-4">
+                      <div>
+                        <a
+                          href="#"
+                          className="text-lg font-medium text-gray-700 dark:text-gray-300 hover:underline hover:text-gray-500"
+                        >
+                          {i.Grouping}
+                        </a>
+
+                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                          {i.CreateAt}
+                        </p>
+                      </div>
+
+                      <Link
+                        href={'/blog/'+i.route}
+                        className="flex items-center px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+                      >
+                        مطالعه
+                      </Link>
                     </div>
                   </div>
                 </div>
-                <div className="p-5 mt-5 min-h-64 flex flex-col justify-between">
-                  <Link href="/blog" target="_blank">
-                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-                      {i.KeyWord}
-                    </h5>
-                  </Link>
-                  <p className="mb-3 font-normal text-sm text-gray-700 ">
-                    {i.ShortDescription}...
-                  </p>
-                  <Link
-                    href={`/blog/${i.route}`}
-                    target="_blank"
-                    className="inline-flex items-center px-3 py-2   font-medium text-center text-[#232563] text-2xl  rounded-lg hover: focus:ring-4 focus:outline-none "
-                  >
-                    مشاهده بیشتر
-                    <svg
-                      viewBox="0 0 1024 1024"
-                      fill="currentColor"
-                      height="1em"
-                      width="1em"
-                    >
-                      <path d="M272.9 512l265.4-339.1c4.1-5.2.4-12.9-6.3-12.9h-77.3c-4.9 0-9.6 2.3-12.6 6.1L186.8 492.3a31.99 31.99 0 000 39.5l255.3 326.1c3 3.9 7.7 6.1 12.6 6.1H532c6.7 0 10.4-7.7 6.3-12.9L272.9 512zm304 0l265.4-339.1c4.1-5.2.4-12.9-6.3-12.9h-77.3c-4.9 0-9.6 2.3-12.6 6.1L490.8 492.3a31.99 31.99 0 000 39.5l255.3 326.1c3 3.9 7.7 6.1 12.6 6.1H836c6.7 0 10.4-7.7 6.3-12.9L576.9 512z" />
-                    </svg>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          ))}
-          {/* </Slider> */}
-        {/* </div> */}
+                )
+              })}
+            </>
+          ) : null}
+        </div>
       </div>
-    </>
+    </section>
   );
 }

@@ -231,7 +231,7 @@ const IntroductionCom = () => {
 
                   <div class="grid grid-cols-4 gap-4 pt-3">
                     {Array.from({ length: 4 }).map((i) => (
-                      <div key={i}>
+                      <div key={Math.floor(Math.random()*10000)}>
                         <Image
                           className="h-auto max-w-full rounded-xl"
                           src={img1}

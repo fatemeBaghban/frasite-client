@@ -111,9 +111,11 @@ export default function FrequentlyQuestion() {
         </div>
       </div>
       <div className="mx-auto w-full max-w-7xl px-4 py-6">
-        {data.map((item) => (
+        {data.map((item) => {
+          
+          return(
           <Accordion
-            key={item.id}
+            key={Math.floor(Math.random()*10000)}
             open={open === item.index}
             className="mb-2 rounded-lg  bg-[#F3F3F3] shadow-md px-4 my-5"
             icon={<Icon id={item.index} open={open} />}
@@ -130,7 +132,7 @@ export default function FrequentlyQuestion() {
               {item.Answer}
             </AccordionBody>
           </Accordion>
-        ))}
+        )})}
       </div>
     </>
   );

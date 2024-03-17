@@ -12,7 +12,6 @@ const SlideShow = () => {
     axios
       .post(onRun + "/slider/getup", { Domain: domin })
       .then((response) => {
-        console.log("sliderrrrrrr", response.data);
         setData(response.data);
       })
       .catch((err) => {
@@ -35,7 +34,7 @@ const SlideShow = () => {
       <div className="slider-container ">
         <Slider {...settings}>
           {data.map((i) => (
-            <div key={i} className="flex flex-row w-fit h-3/5">
+            <div key={Math.floor(Math.random()*10000)} className="flex flex-row w-fit h-3/5">
               <div className="relative justify-center rounded-xl bg-white">
                 <Image
                   src={i.Picture}

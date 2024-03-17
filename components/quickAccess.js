@@ -3,16 +3,16 @@ import card from "../images/card.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { domin, onRun } from "@/pages/api/config";
-
+import Link from "next/link";
 
 const QuickAccess = () => {
-  const [data, setData] = useState([{ Domain: "", Title: "", Url: "" }]);
-
+  const [data, setData] = useState(null);
+  
   const postQuickAccess = () => {
     axios
-      .post(onRun + "/quickaccess/getup", { Domain: domin })
-      .then((response) => {
-        setData(response.data);
+    .post(onRun + "/quickaccess/getup", { Domain: domin })
+    .then((response) => {
+      setData(response.data);
       })
       .catch((err) => {
         console.log(err);
@@ -49,26 +49,39 @@ const QuickAccess = () => {
             </svg>
             <div className="flex-grow border-t-2 border-gray-900"></div>
           </div>
-          <p className="text-xl text-[#232563]">صنایع مفتول ایساتیس پویا</p>
         </div>
       </div>
       <div className="sm:mx-auto w-full max-w-7xl px-4 py-6 flex sm:flex-row flex-col  justify-center ">
-        {data.map((item) => (
-          <div className="flex flex-col mx-2 py-5" key={item.Title}>
-            <Link href={item.Url}>
-            <div className="max-w-sm bg-white border border-gray-200 rounded-xl shadow-xl ">
-              <div className="relative flex h-40 w-full justify-center rounded-xl bg-white">
-                <Image className="rounded-xl" src={card} alt="" />
-                <div className=" absolute -bottom-5 flex h-auto w-auto items-center justify-center rounded-lg border-[2px] border-gray-100 bg-white shadow-lg">
-                  <div className="h-full w-full rounded-full flex flex-row p-1 px-5 text-sm text-gray-700">
-                    <p>{item.Title}</p>
+
+        {data ? (
+          <>
+            {data.map((i) => {
+              return (
+                <div key={Math.floor(Math.random()*10000)} className="flex flex-col items-center justify-center w-full max-w-sm mx-auto">
+                  <div
+                    className="w-full h-64 bg-gray-300 bg-center bg-cover rounded-lg shadow-md"
+                    style={{
+                      backgroundImage: 'url('+i.Picture+')'
+                    }}
+                    
+                  ></div>
+
+                  <div className="w-56 -mt-10 overflow-hidden bg-white rounded-lg shadow-lg md:w-64 dark:bg-gray-800">
+                    <h3 className="py-2 font-bold tracking-wide text-center text-gray-800 uppercase dark:text-white">
+                      {i.Title}
+                    </h3>
+
+                    <div className="flex items-center justify-between px-3 py-2 bg-gray-200 dark:bg-gray-700">
+                      <Link href={i.Url} className="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none">
+                        ورود
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            </Link>
-          </div>
-        ))}
+              );
+            })}
+          </>
+        ) : null}
       </div>
     </>
   );

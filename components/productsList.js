@@ -26,7 +26,7 @@ const ProductsList = () => {
         <>
           {data.map((i) => {
             return (
-              <div className="flex-shrink-0 m-6 relative overflow-hidden bg-indigo-500 rounded-lg max-w-xs shadow-lg">
+              <div key={Math.floor(Math.random()*10000)} className="flex-shrink-0 m-6 relative overflow-hidden bg-indigo-300 rounded-lg max-w-xs shadow-lg">
                 <svg
                   className="absolute bottom-0 left-0 mb-8"
                   viewBox="0 0 375 283"
@@ -61,7 +61,7 @@ const ProductsList = () => {
                     }}
                   ></div>
                   <img
-                    className="relative w-90 rounded-xl"
+                    className="relative w-110 rounded-xl"
                     src={i.Picture}
                     alt=""
                   />

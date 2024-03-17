@@ -8,8 +8,8 @@ import AboutUs from "@/components/aboutus";
 import Branches from "@/components/branch";
 import SlideShow from "@/components/slideShow";
 import ProductsList from "@/components/productsList";
-
-
+import Footer from "@/components/footer";
+import BusinessPartners from "@/components/BusinessPartners";
 export default function Home() {
   return (
     <>
@@ -22,9 +22,9 @@ export default function Home() {
       <div className="bg-white h-fit">
         <ProductsList />
       </div>
-      <div className="bg-white h-fit">
+      {/* <div className="bg-white h-fit">
         <IntroductionCom />
-      </div>
+      </div> */}
       <div className="bg-white h-fit px-12 py-10">
         <Branches />
       </div>
@@ -37,9 +37,11 @@ export default function Home() {
       <div className="bg-white h-fit px-12 py-5 ">
         <Blog />
       </div>
-     
       <div className="bg-white h-fit px-12 py-5">
         <ContactUs />
+      </div>
+      <div className="bg-white h-fit px-12 py-5">
+        <BusinessPartners />
       </div>
       <div className="bg-white h-fit px-12 py-5 pb-10">
         <AboutUs />
