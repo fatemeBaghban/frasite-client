@@ -1,5 +1,4 @@
 import Image from "next/image";
-import card from "../../images/card.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { domin, onRun } from "../api/config";
@@ -17,12 +16,12 @@ const BlogDetails = () => {
   const router = useRouter();
   const [route, setRoute] = useState();
   const handelSlug = () => {
-    setRoute(router.query["slug"]);
+    setRoute(router.query["slugPrd"]);
   };
   const postBloges = () => {
     if (route !== undefined) {
       axios
-        .post(onRun + "/news/get1", { Domain: domin, route: route })
+        .post(onRun + "/product/get1", { Domain: domin, route: route })
         .then((response) => {
           console.log(response.data);
           setData(response.data);
@@ -47,14 +46,8 @@ const BlogDetails = () => {
           <div className="mb-4 md:mb-0 w-full mx-auto relative">
             <div className="px-4 lg:px-0">
               <h2 className="text-4xl font-bold text-gray-800 leading-tight">
-                {data.KeyWord}{" "}
+                {data.Title}{" "}
               </h2>
-              <a
-                href=""
-                className="py-2 text-[#2c2e68] inline-flex items-center font-normal text-base justify-center mb-2"
-              >
-                دسته‌بندی: {data.Grouping}
-              </a>
             </div>
 
             <Image
@@ -73,7 +66,7 @@ const BlogDetails = () => {
               </h2>
 
               <p className="pb-6 font-semibold leading-10 mb-10 my-auto">
-                {data.Content}
+                {data.Paragraph}
               </p>
             </div>
           </div>

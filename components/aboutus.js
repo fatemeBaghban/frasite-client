@@ -90,7 +90,7 @@ const AboutUs = () => {
               </div>{" "}
             </div>
 
-            <div className="block mt-1 text-lg leading-tight font-medium  text-[#232563]">
+            <div className="block  text-lg leading-tight font-medium  mt-5 text-[#232563]">
               <div className="grid grid-flow-row p-2 pt-1 z-40 ">
                 <div className="py-1  text-xl font-bold">مدیر عامل :</div>
                 <div className="py-1 text-sm mt-1 flex flex-row ">

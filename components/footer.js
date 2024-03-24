@@ -2,51 +2,55 @@ import Image from "next/image";
 import nama1 from "../images/enamad.png";
 import nama2 from "../images/logo1.png";
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { domin, onRun } from "@/pages/api/config";
+import axios from "axios";
 
 const Footer = () => {
-  const [data, setData] = useState({ Logo: "", Name: "" });
+  const [data, setData] = useState([{ Title: "", Link: "" }]);
   const postData = () => {
     axios
-      .post(onRun + "/information/getup", { Domain: domin })
+      .post(onRun + "/relatedLinks/getup", { Domain: domin })
       .then((response) => {
+        console.log("linkesssssss", response.data);
         setData(response.data);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  useEffect[(postData, [])];
+  useEffect(postData, []);
   return (
     <footer>
       <div className="bg-[#12224B]  opacity-90 ">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto  max-w-2xl rounded-3xl lg:flex lg:max-w-none">
-            <div className="p-8 sm:p-10 lg:flex-auto">
+            <div className="p-8 px-24 sm:p-10 lg:flex-auto">
               <ul
                 role="list"
                 className="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-50 sm:grid-cols-2 sm:gap-6"
               >
                 <li className="grid gap-x-3 sm:grid-cols-3 grid-cols-1 justify-items-center sm:flex">
-                  <div className="flex flex-col px-5 justify-items-center justify-self-stretch text-base ">
-                    <p className="font-bold mb-3 w-32">ایساتیس پویا</p>
-                    <p>درباره‌ما</p>
-                    <p>تماس‌با‌ما</p>
-                    <p>همکاری‌با‌ما</p>
-                    <p>شرکت‌های تابع</p>
+                  <div className="flex flex-col px-5 pb-5 justify-items-center justify-self-stretch text-base ">
+                    <p className="font-bold mb-3 w-32">صنایع مفتول </p>
+                    <Link href={"/#about"}>درباره‌ما</Link>
+                    <Link href={"/#contact"}>تماس‌با‌ما</Link>
+                    <Link href={"/#businesscom"}>شرکای‌تجاری</Link>
                   </div>
-                  <div className="flex flex-col px-5 justify-items-center justify-self-stretch ">
+                  {/* <div className="flex flex-col px-5 justify-items-center justify-self-stretch ">
                     <p className="font-bold mb-3 w-32"> راهنما</p>
                     <p>سرمایه‌گذاری</p>
                     <p>سرمایه‌پذیری</p>
                     <p>دستورالعمل</p>
                     <p>بیانیه ریسک</p>
-                  </div>
+                  </div> */}
                   <div className="flex flex-col px-5 justify-items-center justify-self-stretch ">
                     <p className="font-bold mb-3 w-32"> لینک‌های مرتبط</p>
-                    <p>سکوی تامین مالی</p>
-                    <p>سبدگردانی</p>
-                    <p>سازمان بورس</p>
-                    <p>گروه مالی</p>
+                    {data.map((i) => (
+                      <Link className="text-white" key={i} href={i.Link}>
+                        {i.Title}
+                      </Link>
+                    ))}
                   </div>
                 </li>
               </ul>
@@ -59,14 +63,14 @@ const Footer = () => {
             </div>
           </div>
           <div className="mx-auto  max-w-2xl border-t-2 border-gray-100  lg:flex lg:max-w-none">
-            <div className=" lg:flex-auto ring-t-2 ring-white py-3 text-center lg:text-right">
+            <div className="lg:flex-auto ring-t-2 ring-white py-3 text-center text-white">
               <p>
-                شرکت سرمایه‌گذاری ایساتیس پویا در تاریخ 1384/12/22 تحت شماره
-                7919 در اداره ثبت شرکتهای یزد بصورت شرکت سهامی خاص به ثبت رسیده
-                است.
+                تمام حقوق مادی و معنوی این سایت متعلق به شرکت ایساتیس پویا می
+                باشد.{" "}
               </p>
             </div>
-            <div className="py-4 lg:w-fit lg:max-w-md  flex justify-center ">
+            {/* icons socialMedia */}
+            {/* <div className="py-4 lg:w-fit lg:max-w-md  flex justify-center ">
               <div className="flex flex-row  left-0">
                 <div className="flex flex-row">
                   <svg
@@ -118,7 +122,7 @@ const Footer = () => {
                   </svg>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

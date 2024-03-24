@@ -25,38 +25,7 @@ const navigation = [
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-const solutions = [
-  {
-    name: "Analytics",
-    description: "Get a better understanding of your traffic",
-    href: "#",
-    icon: ChartPieIcon,
-  },
-  {
-    name: "Engagement",
-    description: "Speak directly to your customers",
-    href: "#",
-    icon: CursorArrowRaysIcon,
-  },
-  {
-    name: "Security",
-    description: "Your customers' data will be safe and secure",
-    href: "#",
-    icon: FingerPrintIcon,
-  },
-  {
-    name: "Integrations",
-    description: "Connect with third-party tools",
-    href: "#",
-    icon: SquaresPlusIcon,
-  },
-  {
-    name: "Automations",
-    description: "Build strategic funnels that will convert",
-    href: "#",
-    icon: ArrowPathIcon,
-  },
-];
+
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [data, setData] = useState();
@@ -141,7 +110,7 @@ const Header = () => {
         <div className="hidden lg:flex lg:gap-x-12 scroll-smooth">
           {navigation.map((item) => (
             <a
-              key={Math.floor(Math.random()*10000)}
+              key={Math.floor(Math.random() * 10000)}
               href={item.href}
               className="text-base font-bold leading-6 text-gray-100"
             >
@@ -168,7 +137,7 @@ const Header = () => {
                   <div className="p-4">
                     {menu.map((item) => (
                       <div
-                        key={Math.floor(Math.random()*10000)}
+                        key={Math.floor(Math.random() * 10000)}
                         className="group relative flex grow rounded-lg p-4  justify-items-start hover:bg-gray-50"
                       >
                         {item.Icone === null ? null : (
@@ -177,14 +146,19 @@ const Header = () => {
                               className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
                               aria-hidden="true"
                             >
-                              <Image alt="" src={item.Icone}  width={100} height={100}/>
+                              <Image
+                                alt=""
+                                src={item.Icone}
+                                width={100}
+                                height={100}
+                              />
                             </div>
                           </div>
                         )}
                         <div className="my-auto mx-2">
                           <a
                             href={item.route}
-                            className="font-semibold text-black right-2 " 
+                            className="font-semibold text-black right-2 "
                           >
                             {item.Title}
                             <span className="absolute inset-0" />
@@ -218,7 +192,7 @@ const Header = () => {
             ? quickaccess.map((i) => {
                 return (
                   <Link
-                    key={Math.floor(Math.random()*10000)}
+                    key={Math.floor(Math.random() * 10000)}
                     target="_blank"
                     href={i.Url}
                     className="text-base font-bold  bg-leading-6 bg-white text-[#232563] px-4 py-2 rounded-xl ml-2"
@@ -280,7 +254,7 @@ const Header = () => {
                       <Disclosure.Panel className="mt-2 space-y-2">
                         {menu.map((item) => (
                           <Disclosure.Button
-                            key={Math.floor(Math.random()*10000)}
+                            key={Math.floor(Math.random() * 10000)}
                             as="a"
                             href={item.route}
                             className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
@@ -294,7 +268,7 @@ const Header = () => {
                 </Disclosure>
                 {navigation.map((item) => (
                   <Link
-                    key={Math.floor(Math.random()*10000)}
+                    key={Math.floor(Math.random() * 10000)}
                     href={item.href}
                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
@@ -307,7 +281,7 @@ const Header = () => {
                   ? quickaccess.map((i) => {
                       return (
                         <Link
-                          key={Math.floor(Math.random()*10000)}
+                          key={Math.floor(Math.random() * 10000)}
                           href={i.Url}
                           target="_blank"
                           className="text-base font-bold  bg-leading-6 bg-white text-[#232563] px-4 py-2 rounded-xl ml-2"
