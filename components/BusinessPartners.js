@@ -13,7 +13,7 @@ const BusinessPartners = () => {
         setData(response.data);
       })
       .catch((error) => {
-        console.log("dd");
+        console.log(error);
       });
   };
 

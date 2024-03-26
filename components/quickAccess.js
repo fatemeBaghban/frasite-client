@@ -71,7 +71,7 @@ const QuickAccess = () => {
                     </h3>
 
                     <Link
-                      className="flex justify-center px-3 py-2 bg-[#232563] hover:bg-indigo-700 "
+                      className="flex justify-center px-3 text-white py-2 bg-[#232563] hover:bg-indigo-700 "
                       href={i.Url}
                     >
                       {/* <Link href={i.Url} className="   text-xs font-semibold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded hover:bg-gray-700  focus:bg-gray-700  focus:outline-none">

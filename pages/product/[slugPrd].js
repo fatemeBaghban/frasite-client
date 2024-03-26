@@ -23,7 +23,6 @@ const BlogDetails = () => {
       axios
         .post(onRun + "/product/get1", { Domain: domin, route: route })
         .then((response) => {
-          console.log(response.data);
           setData(response.data);
         })
         .catch((err) => {

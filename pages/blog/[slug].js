@@ -24,7 +24,6 @@ const BlogDetails = () => {
       axios
         .post(onRun + "/news/get1", { Domain: domin, route: route })
         .then((response) => {
-          console.log(response.data);
           setData(response.data);
         })
         .catch((err) => {

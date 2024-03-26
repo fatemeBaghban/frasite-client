@@ -57,7 +57,6 @@ export default function Blog() {
           {data ? (
             <>
               {data.map((i) => {
-                console.log(i);
                 return (
                   <div key={Math.floor(Math.random() * 10000)}>
                     <Link href={"/blog/" + i.route} target="_blank">

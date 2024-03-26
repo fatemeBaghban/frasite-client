@@ -12,7 +12,6 @@ const Footer = () => {
     axios
       .post(onRun + "/relatedLinks/getup", { Domain: domin })
       .then((response) => {
-        console.log("linkesssssss", response.data);
         setData(response.data);
       })
       .catch((err) => {
@@ -65,8 +64,15 @@ const Footer = () => {
           <div className="mx-auto  max-w-2xl border-t-2 border-gray-100  lg:flex lg:max-w-none">
             <div className="lg:flex-auto ring-t-2 ring-white py-3 text-center text-white">
               <p>
-                تمام حقوق مادی و معنوی این سایت متعلق به شرکت ایساتیس پویا می
-                باشد.{" "}
+                <span>
+                  تمام حقوق مادی و معنوی این سایت متعلق به شرکت توسعه و اطلاعات
+                  ایساتیس پویا
+                </span>
+                <Link href={"fidip.ir"} target="_blank">
+                  {" "}
+                  fidip.ir{" "}
+                </Link>{" "}
+                <span> می باشد. </span>
               </p>
             </div>
             {/* icons socialMedia */}

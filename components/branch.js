@@ -22,13 +22,13 @@ export default function Branches() {
       <div className="w-full h-full bg-white">
         <div>
           <div className=" relative overflow-auto  sm:rounded-lg">
-            <div className=" p-5 text-lg font-semibold  text-gray-900 bg-white ">
+            <div className=" p-5 text-lg font-semibold text-gray-900 bg-white ">
               <form className="max-w-md mx-auto bg-white   ">
                 <label
                   htmlFor="default-search"
                   className="mb-2 text-sm font-medium text-gray-900 sr-only"
                 ></label>
-                <div className="relative shadow-lg bg-gray-50">
+                <div className="relative shadow-sm bg-gray-50">
                   <input
                     type="search"
                     id="default-search"
@@ -59,45 +59,46 @@ export default function Branches() {
                 </div>
               </form>
             </div>
-            <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
-              <thead className="text-xs text-gray-700  rounded-lg  uppercase bg-[#F5F5F5] mb-6">
-                <tr className="rounded-full py-8">
-                  <th scope="col" className="px-6 py-3">
-                    استان
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    شهر
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    نوع
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    آدرس
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    تلفن
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="rounded-ful">
-                {data.map((index) => {
-                  return (
-                    <tr
-                      className="bg-[#FBFBFB] border-b border-white rounded-full border-8 shadow-md mt-2"
-                      key={Math.floor(Math.random()*10000)}
-                    >
-                      <th
-                        scope="row"
-                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+            <div className="sm:p-4 p-2 rounded-lg max-w-7xl mx-auto border-2 border-gray-100  w-full overflow-x-scroll sm:overflow-x-hidden">
+              <table className="w-full text-sm text-left rtl:text-right text-gray-500  ">
+                <thead className="text-xs text-gray-700  rounded-lg  uppercase bg-[#F5F5F5] mb-6">
+                  <tr className="rounded-full py-8">
+                    <th scope="col" className="px-6 py-3">
+                      استان
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      شهر
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      نوع
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      آدرس
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      تلفن
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="rounded-ful">
+                  {data.map((index) => {
+                    return (
+                      <tr
+                        className="bg-[#FBFBFB] border-b border-white rounded-full border-8 mt-3 py-5  "
+                        key={Math.floor(Math.random() * 10000)}
                       >
-                        <p>{index.Province}</p>
-                      </th>
-                      <td className="px-6 py-4">{index.City} </td>
-                      <td className="px-6 py-4">{index.Types}</td>
-                      <td className="px-6 py-4">{index.Address}</td>
-                      <td className="px-6 py-4 text-right">
-                        {index.Telephone}
-                        {/* <div className="flex flex-row">
+                        <th
+                          scope="row"
+                          className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                        >
+                          <p>{index.Province}</p>
+                        </th>
+                        <td className="px-6 py-4">{index.City} </td>
+                        <td className="px-6 py-4">{index.Types}</td>
+                        <td className="px-6 py-4">{index.Address}</td>
+                        <td className="px-6 py-4 text-right">
+                          {index.Telephone}
+                          {/* <div className="flex flex-row">
                           <svg
                             viewBox="0 0 24 24"
                             fill="currentColor"
@@ -121,12 +122,13 @@ export default function Branches() {
                             </svg>
                           </a>
                         </div> */}
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
